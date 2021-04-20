@@ -563,6 +563,7 @@ legend {
 	color:#00bba7;
 }
 .infoareawrap {
+	text-align:justify;
 	border:1px solid #eee;
 	padding:20px;
 }
