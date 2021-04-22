@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Inicio de sesión</title>	
+  <title>Autenticación</title>	
   <link rel="shortcut icon" type="image/x-icon" href="../images/icon.ico"> 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300, 400, 500" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="./style.css">
@@ -34,10 +34,10 @@
     <div class="user_options-forms" id="user_options-forms">
       <div class="user_forms-login">
         <h2 class="forms_title">Iniciar sesión</h2>
-        <form class="forms_form">
+        <form class="forms_form" onsubmit="return false">
           <fieldset class="forms_fieldset">
             <div class="forms_field">
-              <input type="text" placeholder="Usuario" class="forms_field-input" required autofocus />
+              <input id="iuser"  type="text" placeholder="Usuario" class="forms_field-input" required autofocus />
             </div>
              <p class="relleno">
               . 
@@ -52,7 +52,7 @@
               . 
              </p>
             <div class="forms_field">
-              <input type="password" placeholder="Contraseña" class="forms_field-input" required />
+              <input id="ipass" type="password" placeholder="Contraseña" class="forms_field-input" required autofocus  />
             </div>
             <div class="forms_field">
               <div class="forms_field">
@@ -111,42 +111,42 @@
           </fieldset>
           <div class="forms_buttons">
             <button type="button" class="forms_buttons-forgot">¿Olvidó su contraseña?</button>
-            <input type="submit" value="Iniciar sesión" class="forms_buttons-action">
+            <input type="submit" value="Iniciar sesión" class="forms_buttons-action" onclick="IniciarSesion()">
           </div>
         </form>
       </div>
       <div class="user_forms-signup">
         <h2 class="forms_title">Registro de pacientes</h2>
-        <form class="forms_form">
+        <form class="forms_form" onsubmit="return false">
           <fieldset class="forms_fieldset">
             <div class="forms_field">
-              <input type="text" placeholder="Nombre" class="forms_field-input" required />
+              <input id="nombre" type="text" placeholder="Nombre" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <input type="text" placeholder="Apellido" class="forms_field-input" required />
+              <input id="apellido" type="text" placeholder="Apellido" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <input type="date" placeholder="Fecha de nacimiento" class="forms_field-input" required />
+              <input id="fecha" type="date" placeholder="Fecha de nacimiento" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <label for="cars" class="eleccion">Sexo:</label>
-              <select name="cars" id="cars" class="eleccion">
-                <option value="volvo">Femenino</option>
-                <option value="saab">Masculino</option>
+              <label for="sexo" class="eleccion">Sexo:</label>
+              <select name="sexo" id="sexo" class="eleccion">
+                <option value="F">Femenino</option>
+                <option value="M">Masculino</option>
               </select>
             </div> 
             <div class="forms_field">
-              <input type="text" placeholder="Nombre de usuario" class="forms_field-input" required />
+              <input id="usuario" type="text" placeholder="Nombre de usuario" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <input type="password" placeholder="Contraseña" class="forms_field-input" required />
+              <input id="pass" type="password" placeholder="Contraseña" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <input type="number" placeholder="Número telefónico (opcional)" class="forms_field-input" required />
+              <input id="number" type="number" placeholder="Número telefónico (opcional)" class="forms_field-input"/>
             </div>
           </fieldset>
           <div class="forms_buttons">
-            <input type="submit" value="Registrar" class="forms_buttons-action">
+            <input onclick="CrearUsuario()" type="submit" value="Registrar" class="forms_buttons-action">
           </div>
         </form>
       </div>
@@ -155,6 +155,6 @@
 </section>
 <!-- partial -->
   <script  src="./script.js"></script>
-
+  <script src="./funciones.js"></script>
 </body>
 </html>

@@ -211,6 +211,7 @@ input::placeholder {
 .user_options-forms .forms_title {
   margin-bottom: 45px;
   font-size: 1.5rem;
+  font-family:"Montserrat", sans-serif;
   font-weight: 500;
   line-height: 1em;
   text-transform: uppercase;

@@ -1,4 +1,4 @@
-class Usuario:
+class Enfermera:
     def __init__(self,nombre,apellido,fecha,sexo,user,password,telefono):
         self.nombre=nombre
         self.apellido=apellido
