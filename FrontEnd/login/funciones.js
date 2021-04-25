@@ -9,6 +9,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
 
 //Registrar usuarios
 function CrearUsuario(){
+    var existe=false;
     var nombre = document.getElementById("nombre");
     var apellido = document.getElementById("apellido");
     var fecha = document.getElementById("fecha");
@@ -17,7 +18,28 @@ function CrearUsuario(){
     var pass = document.getElementById("pass")
     var telefono = document.getElementById("number");
 
-  
+    
+    fetch(`http://localhost:5000/pacientes/${usuario.value}`) //Buscando usuarios repetidos
+    // Convirtiendo de string a texto
+    .then(response => response.json())
+    .then(data => {
+        if(data.user=="false"){
+            existe=false;
+            
+        //Sí se puede crear el usuario   
+       
+        }else{
+            alert(`El usario ${data.user} ya se encuentra en uso`)  
+            existe=true;
+        //No se puede crear el usuario
+         
+        }
+    })
+    
+    
+   
+    if(pass.value.length>=8 && pass.value!=""){ 
+         
     fetch('http://localhost:5000/registro',
     {
         method:'POST',
@@ -60,25 +82,64 @@ function CrearUsuario(){
             alert('Hubo un error creando usuario')
           }
     )
-
+    
+        }
+        else{
+            alert("La contraseña debe mantener al menos 8 caracteres")
+        }
+      
+    
 }
 // Funcion para Iniciar Sesion
 function IniciarSesion(){
     let usuario = document.getElementById("iuser");
     let pass = document.getElementById("ipass");
-    fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
-    // Convirtiendo de string a texto
-    .then(response => response.json())
-    .then(data => {
+    if(usuario.value=="admin" && pass.value=="1234"){
+        alert(`Bienvenido Herbert`)
+                window.location.href='../admin/inicio.html'
+    }
+    else{
         
-        if(data.nombre=="false"){
-            alert('Verifique sus Credenciales')
-            pass.value='';
-            usuario.value='';
-        }else{
-            alert(`Bienvenido ${data.nombre}`)
-            window.location.href='../admin/inicio.html'
+        fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
+        // Convirtiendo de string a texto
+        .then(response => response.json())
+        .then(data => {
+            
+            if(data.nombre=="false"){
+                fetch(`http://localhost:5000/loginmedico/${usuario.value}/${pass.value}`) //Buscando doctores
+                // Convirtiendo de string a texto
+                .then(response => response.json())
+                .then(data => {
+                    
+                    if(data.nombre=="false"){
+                        fetch(`http://localhost:5000/loginenfermera/${usuario.value}/${pass.value}`) //Buscando enfermeras
+                        // Convirtiendo de string a texto
+                        .then(response => response.json())
+                        .then(data => {
+                            
+                            if(data.nombre=="false"){
+                            alert("Verifique sus iniciales")
+                               usuario.value='';
+                               pass.value='';
+                            }else{
+                                alert(`Bienvenido enfermera(o): ${data.nombre}`)
+                                
+                            }
+                        })
+                       
+                    }else{
+                        alert(`Bienvenido doctor(a): ${data.nombre}`)
+                        
+                    }
+                })
+               
+            }else{
+                alert(`Bienvenido ${data.nombre}`)
+                
+            }
+        })
+        
         }
-    })
-
-}
+        
+    }
+  

@@ -45,6 +45,22 @@ p{
 	text-decoration: none;
 	font-size: 10px;	
 }
+.archivos{
+	color: #111827;;
+
+}
+.ver{
+	width: 25px;
+	height: 25px;
+	align-content: center;
+	
+}
+.iboton{
+	color: white;
+	border: none;
+	padding-left: 1px;
+}
+
 i{
 padding-left: 10px;
 color: var(--dk-gray-400);
@@ -59,8 +75,22 @@ color: var(--dk-gray-400);
 	margin-left: 0;
 }
 
+.reportes{
+	background-color: #3D566E;
+	padding-right: 13px;
+	padding-left: 13px;
+	border-radius: 20px;
+	font-family: 'Inter', sans-serif;
+	color:ivory;
+}
+.reportes1{
+	background-color: cadetblue;
+	padding-right: 13px;
+	padding-left: 13px;
+	border-radius: 20px;
+	font-family: 'Inter', sans-serif;
 
-
+}
 /** --------------------------------
  -- Sidebar
 -------------------------------- */
@@ -203,6 +233,11 @@ color: var(--dk-gray-400);
   position: relative;
 	background-color: var(--dk-dark-bg);
 }
+#tablausers{
+	height:150px;
+	overflow:auto;  
+	margin-top:20px;
+  }
 
 .statistics .box i {
 	width: 60px;
@@ -229,9 +264,28 @@ color: var(--dk-gray-400);
 .charts .chart-container h3 {
 	color: var(--dk-gray-400)
 }
+.reportcontainer{
+	background-color: var(--dk-dark-bg);
+  height: 100px;
+}
 
+#tablausers{
+	
+	height:447px;
+	width: 519px;
+	overflow:auto;  
 
+  }
+#tablausers table th {
+	margin-top: -40px;  
+	position: sticky;
+	top: 0;
+	 background-color: white; 
 
+ }
+#tablausers table{
+	margin-top: 20px;;
+}
 
 /** --------------------------------
  -- users
@@ -262,6 +316,9 @@ color: var(--dk-gray-400);
 	position: relative;
 	overflow: hidden;
 	border-radius: 3px;
+	font-family: 'Inter', sans-serif;
+	color: var(--dk-gray-400);
+	width: 1060px;
 }
 
 .statis .box h3:after {
@@ -295,6 +352,8 @@ color: var(--dk-gray-400);
 .main-color {
 	color: #ffc107
 }
+
+
 
 /** --------------------------------
  -- Please don't do that in real-world projects!
@@ -403,4 +462,6 @@ color: var(--dk-gray-400);
 
 ::-webkit-scrollbar-thumb:hover {
 	background-color: #00bba7;
-}
+}	
+/* Pop Up */
+

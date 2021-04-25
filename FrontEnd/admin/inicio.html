@@ -7,11 +7,9 @@
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'>
 <link rel="stylesheet" href="./style.css">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm-fill" viewBox="0 0 16 16">
-  <path d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5zm2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.035 8.035 0 0 0 .86 5.387zM11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.035 8.035 0 0 0-3.527-3.527z"/>
-</svg>
+
 </head>
-<body>
+<body id="cuerpo">
 <!-- partial:index.partial.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
   <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
@@ -42,7 +40,13 @@
   <a href="#Registro"> Datos registrados</a>
   <p></p>
   <i class="uil-file"></i> 
-  <a href="">Carga de archivos</a>
+  <a href="#Cargas">Carga de archivos</a>
+  <p>
+   
+  </p>
+ <p></p>
+ <i class="uil-clipboard"></i> 
+  <a href="#Reportes">Reportes</a>
   <p>
    
   </p>
@@ -112,8 +116,8 @@
           <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
             <i class="uil-users-alt fs-2 text-center bg-transparent rounded-circle"></i>
             <div class="ms-3">
-              <div class="d-flex align-items-center">
-                <h3 class="mb-0">1,245</h3> <span class="d-block ms-2">Pacientes</span>
+              <div class="d-flex align-items-center" id="numpacientes">
+                <h3 class="mb-0" >1,245</h3> <span class="d-block ms-2">Pacientes</span>
               </div>
               <p class="fs-normal mb-0"></p>
             </div>
@@ -121,8 +125,8 @@
         </div>
         <div class="col-lg-4">
           <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
-            <i class=" fs-2 text-center rounded-circle"></i>
-            <div class="ms-3">
+            <i class=" uil-file-medical fs-2 text-center rounded-circle"></i>
+            <div class="ms-3" id="pop">
               <div class="d-flex align-items-center">
                 <h3 class="mb-0">34</h3> <span class="d-block ms-2">Médicos</span>
               </div>
@@ -132,29 +136,47 @@
         </div>
         <div class="col-lg-4">
           <div class="box d-flex rounded-2 align-items-center p-3">
-            <i class="uil-users-alt fs-2 text-center rounded-circle"></i>
+            <i class="uil-pen fs-2 text-center rounded-circle"></i>
             <div class="ms-3">
               <div class="d-flex align-items-center">
-                <h3 class="mb-0">5,245</h3> <span class="d-block ms-2">Enfermeras</span>
+                <h3 class="mb-0">60</h3> <span class="d-block ms-2">Enfermeras</span>
               </div>
               <p class="fs-normal mb-0"></p>
             </div>
           </div>
         </div>
       </div>
+      
+
 
     <section class="charts mt-4" id="Registro">
       <div class="row">
         <div class="col-lg-6">
           <div class="chart-container rounded-2 p-3">
             <h3 class="fs-6 mb-3">Pacientes</h3>
-            <div id="tablausers" class="row"></div>
+            
+              
+            <div id="tablausers" class="row">
+              
+            </div>
             
           </div>
         </div>
         <div class="col-lg-6">
           <div class="chart-container rounded-2 p-3">
             <h3 class="fs-6 mb-3">Médicos</h3>
+            <table class="table" style="margin:10px">
+              <thead>
+              <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Especialidad</th>
+              <th scope="col">Opciones</th>
+              </tr>
+              </thead>
+              </table>
+
             <div id="tablamedicos" class="row"></div>
           </div>
         </div>
@@ -177,56 +199,92 @@
         </div>
         
       </div>
+
+     
     </section>
    
 
-    <section class="statis mt-4 text-center">
+    <section class="statis mt-4 text-center" >
       <div class="row">
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="box bg-primary p-3">
-            <i class="uil-eye"></i>
-            <h3>5,154</h3>
-            <p class="lead">Page views</p>
+          <div class="box bg-white p-3" id="Cargas">
+            <i class="uil-users-alt"></i> Cargar pacientes
+            <form action="" class="archivos"> <p></p>
+              <label for="myfile">Seleccione un archivo:</label>
+              <input type="file"   id="carga" name="carga"
+              accept=".csv"><br><br>
+              <button style="background-color:cadetblue ;" onclick="cargar()" > Cargar </button>
+            
+            <p class="lead"></p>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="box bg-danger p-3">
-            <i class="uil-user"></i>
-            <h3>245</h3>
-            <p class="lead">User registered</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-          <div class="box bg-warning p-3">
-            <i class="uil-shopping-cart"></i>
-            <h3>5,154</h3>
-            <p class="lead">Product sales</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="box bg-success p-3">
-            <i class="uil-feedback"></i>
-            <h3>5,154</h3>
-            <p class="lead">Transactions</p>
-          </div>
-        </div>
-      </div>
+       
     </section>
-
+    <section class="statis mt-4 text-center" >
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="box bg-white-3" id="Cargas">
+            <p></p>
+            <i class="uil-file-medical"></i> Cargar doctores
+            <form action="" class="archivos"> <p></p>
+              <label for="myfile2">Seleccione un archivo:</label>
+              <input type="file" id="myfile" name="myfile2"><br><br>
+              <input type="submit" style="background-color:cadetblue ;" value="Cargar">
+            
+            <p class="lead"></p>
+          </div>
+        </div>
+       
+    </section>
+    <section class="statis mt-4 text-center" >
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="box bg-white p-3" id="Cargas">
+            <i class="uil-pen"></i> Cargar enfermeras <p></p>
+            <form action="" class="archivos">
+              <label for="myfile3">Seleccione un archivo:</label>
+              <input type="file" id="myfile3" name="myfile3"><br><br>
+              <input type="submit" style="background-color:cadetblue ;" value="Cargar">
+            
+            <p class="lead"></p>
+          </div>
+        </div>
+       
+    </section>
+    <section class="statis mt-4 text-center" >
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="box bg-white p-3" id="Cargas">
+            <i class="uil-thermometer"></i> Cargar medicamentos <p></p>
+            <form action="" class="archivos">
+              <label for="myfile4">Seleccione un archivo:</label>
+              <input type="file" id="myfile4" name="myfile4"><br><br>
+              <input type="submit" style="background-color:cadetblue ;" value="Cargar"> 
+            
+            <p class="lead"></p>
+          </div>
+        </div>
+       
+    </section>
     <section class="charts mt-4">
-      <div class="chart-container p-3">
+      <div class="reportcontainer">
         <h3 class="fs-6 mb-3">Reportes</h3>
-        <div style="height: 300px">
-          <canvas id="chart3" width="100%"></canvas>
+        <div id="Reportes">
+          <button class="reportes"> Descargar reporte de pacientes</button>
+          <button class="reportes1"> Descargar reporte de médicos</button>
+          <button class="reportes"> Descargar reporte de enfermeras</button>
+          <button class="reportes1"> Descargar reporte de medicamentos</button>
         </div>
       </div>
     </section>
   </div>
 </section>
+<section>
+
 <!-- partial -->
 <script src="../admin/acciones.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script><script  src="./script.js"></script>
-
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+<script  src="./script.js"></script>
 </body>
 </html>

@@ -45,37 +45,6 @@ window.addEventListener('resize', function () {
 // dropdown menu in the side nav
 var slideNavDropdown = $('.sidebar-dropdown');
 
-$('.sidebar .categories').addEventListener('click', function (event) {
-	event.preventDefault()
-
-	const item = event.target.closest('.has-dropdown')
-
-	if (item) {
-		item.classList.toggle('opened')
-
-		siblings(item).forEach(sibling => {
-			sibling.classList.remove('opened')
-		})
-	
-		if (item.classList.contains('opened')) {
-			const toOpen = find(item, '.sidebar-dropdown')
-
-			if (toOpen) {
-				toOpen.classList.add('active')
-			}
-	
-			siblings(item).forEach(sibling => {
-				const toClose = find(sibling, '.sidebar-dropdown')
-
-				if (toClose) {
-					toClose.classList.remove('active')
-				}
-			})
-		} else {
-			find(item, '.sidebar-dropdown').classList.toggle('active')
-		}
-	}
-})
 
 $('.sidebar .close-aside').addEventListener('click', function () {
 	$(`#${this.dataset.close}`).classList.add('show-sidebar')
@@ -84,10 +53,9 @@ $('.sidebar .close-aside').addEventListener('click', function () {
 
 
 // Global defaults
-Chart.defaults.global.animation.duration = 2000; // Animation duration
-Chart.defaults.global.title.display = false; // Remove title
-Chart.defaults.global.defaultFontColor = '#71748c'; // Font color
-Chart.defaults.global.defaultFontSize = 13; // Font size for every label
+
+
+
 
 // Tooltip global resets
 Chart.defaults.global.tooltips.backgroundColor = '#111827'
