@@ -62,7 +62,110 @@ def cargap():
     gestor.cargamasiva(dato['data'])
     return '{"data":"Cargados"}'
 
+@app.route('/cargamedicos',methods=['POST'])
+def cargamed():
+    dato = request.json
+    gestor.cargamasivamed(dato['data'])
+    return '{"data":"Cargados"}'   
 
+@app.route('/cargaenfermeras',methods=['POST'])
+def cargaenf():
+    dato = request.json
+    gestor.cargamasivaenf(dato['data'])
+    return '{"data":"Cargados"}'  
+
+@app.route('/cargamedicamentos',methods=['POST'])
+def cargamedi():
+    dato = request.json
+    gestor.cargamasivamedi(dato['data'])
+    return '{"data":"Cargados"}'        
+#Vista, modificación y eliminación de usuario
+@app.route('/setpaciente/<user>',methods=['POST'])
+def setpaciente(user):
+    gestor.setPaciente(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getpaciente')
+def getpaciente():
+    return gestor.getPaciente()
+@app.route('/actualizacion/<user>',methods=['PUT'])
+def actualizarusuario(user):
+    dato = request.json
+    if gestor.actualizar_usuario(user,dato['nombre'],dato['apellido'],dato['fecha'],dato['sexo'],dato['user'],dato['password'],dato['telefono']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
+             
+@app.route('/eliminarpaciente/<user>',methods=['DELETE'])
+def eliminar_usuario(user):
+    if(gestor.eliminar_usuario(user)):
+        return '{"data":"Eliminado"}'
+    return '{"data":"Error"}'
+
+#Vista, modificación y eliminación de médicos
+@app.route('/setmedico/<user>',methods=['POST'])
+def setmedico(user):
+    gestor.setMedico(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getmedico')
+def getmedico():
+    return gestor.getMedico()
+@app.route('/actualizamedico/<user>',methods=['PUT'])
+def actualizamedico(user):
+    dato = request.json
+    if gestor.actualizar_medico(user,dato['nombre'],dato['apellido'],dato['fecha'],dato['sexo'],dato['user'],dato['password'],dato['especialidad'],dato['telefono']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
+             
+@app.route('/eliminarmedico/<user>',methods=['DELETE'])
+def eliminar_medico(user):
+    if(gestor.eliminar_medico(user)):
+        return '{"data":"Eliminado"}'
+    return '{"data":"Error"}'
+
+#Vista, modificación y eliminación de enfermeras
+@app.route('/setenfermera/<user>',methods=['POST'])
+def setenfermera(user):
+    gestor.setEnfermera(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getenfermera')
+def getenfermera():
+    return gestor.getEnfermera()
+@app.route('/actualizaenfermera/<user>',methods=['PUT'])
+def actualizaenfermera(user):
+    dato = request.json
+    if gestor.actualizar_enfermera(user,dato['nombre'],dato['apellido'],dato['fecha'],dato['sexo'],dato['user'],dato['password'],dato['telefono']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
+             
+@app.route('/eliminarenfermera/<user>',methods=['DELETE'])
+def eliminar_enfermera(user):
+    if(gestor.eliminar_enfermera(user)):
+        return '{"data":"Eliminado"}'
+    return '{"data":"Error"}'
+
+#Vista, modificación y eliminación de medicamentos
+@app.route('/setmedicamento/<nombre>',methods=['POST'])
+def setmedicamento(nombre):
+    gestor.setMedicamento(nombre)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getmedicamento')
+def getmedicamento():
+    return gestor.getMedicamento()
+@app.route('/actualizamedicamento/<nombre>',methods=['PUT'])
+def actualizamedicamento(nombre):
+    dato = request.json
+    if gestor.actualizar_medicamento(nombre,dato['nombre'],dato['precio'],dato['descripcion'],dato['cantidad']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
+             
+@app.route('/eliminarmedicamento/<nombre>',methods=['DELETE'])
+def eliminar_medicamento(nombre):
+    if(gestor.eliminar_medicamento(nombre)):
+        return '{"data":"Eliminado"}'
+    return '{"data":"Error"}'
 #INICIAR EL SERVIDOR
 
 if __name__ == "__main__":

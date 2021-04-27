@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="../images/icon.ico">
   <title>Administrador</title>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'>
 <link rel="stylesheet" href="./style.css">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
+    <style>
+      html, body {
+      height:50%;
+      }
+       
+      img.sel {
+      display:grid;
+      margin:auto 10%;
+      height:auto;
+      width:100%;
+      }
+      </style>
 </head>
 <body id="cuerpo">
 <!-- partial:index.partial.html -->
@@ -165,18 +178,6 @@
         <div class="col-lg-6">
           <div class="chart-container rounded-2 p-3">
             <h3 class="fs-6 mb-3">Médicos</h3>
-            <table class="table" style="margin:10px">
-              <thead>
-              <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">Especialidad</th>
-              <th scope="col">Opciones</th>
-              </tr>
-              </thead>
-              </table>
-
             <div id="tablamedicos" class="row"></div>
           </div>
         </div>
@@ -209,8 +210,8 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <div class="box bg-white p-3" id="Cargas">
             <i class="uil-users-alt"></i> Cargar pacientes
-            <form action="" class="archivos"> <p></p>
-              <label for="myfile">Seleccione un archivo:</label>
+            <form action="" class="archivos" onsubmit="return false"> <p></p>
+              <label for="carga">Seleccione un archivo:</label>
               <input type="file"   id="carga" name="carga"
               accept=".csv"><br><br>
               <button style="background-color:cadetblue ;" onclick="cargar()" > Cargar </button>
@@ -223,14 +224,13 @@
     <section class="statis mt-4 text-center" >
       <div class="row">
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-          <div class="box bg-white-3" id="Cargas">
-            <p></p>
+          <div class="box bg-white-3" id="Cargas"> 
             <i class="uil-file-medical"></i> Cargar doctores
-            <form action="" class="archivos"> <p></p>
-              <label for="myfile2">Seleccione un archivo:</label>
-              <input type="file" id="myfile" name="myfile2"><br><br>
-              <input type="submit" style="background-color:cadetblue ;" value="Cargar">
-            
+            <form  class="archivos" onsubmit="return false"> <p></p>
+              <label for=" cargamed" class="archivos">Seleccione un archivo:</label>
+              
+              <input type="file" id="cargamed" name="cargamed" accept=".csv" class="archivos"><br><br>
+              <button style="background-color:cadetblue ;" onclick="cargarmedicos()" > Cargar </button>
             <p class="lead"></p>
           </div>
         </div>
@@ -241,10 +241,10 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <div class="box bg-white p-3" id="Cargas">
             <i class="uil-pen"></i> Cargar enfermeras <p></p>
-            <form action="" class="archivos">
-              <label for="myfile3">Seleccione un archivo:</label>
-              <input type="file" id="myfile3" name="myfile3"><br><br>
-              <input type="submit" style="background-color:cadetblue ;" value="Cargar">
+            <form action="" class="archivos" onsubmit="return false">
+              <label for="myfile3" class="archivos">Seleccione un archivo:</label>
+              <input type="file" id="cargaenf" accept=".csv"  class="archivos"><br><br>
+              <button style="background-color:cadetblue ;" onclick="cargarenfermeras()" > Cargar </button>
             
             <p class="lead"></p>
           </div>
@@ -256,10 +256,10 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <div class="box bg-white p-3" id="Cargas">
             <i class="uil-thermometer"></i> Cargar medicamentos <p></p>
-            <form action="" class="archivos">
-              <label for="myfile4">Seleccione un archivo:</label>
-              <input type="file" id="myfile4" name="myfile4"><br><br>
-              <input type="submit" style="background-color:cadetblue ;" value="Cargar"> 
+            <form action="" class="archivos" onsubmit="return false">
+              <label for="myfile4" class="archivos">Seleccione un archivo:</label>
+              <input type="file" id="cargamedi" accept=".csv" name="myfile4" class="archivos"><br><br>
+              <button style="background-color:cadetblue ;" onclick="cargarmedicamentos()" > Cargar </button>
             
             <p class="lead"></p>
           </div>
@@ -270,10 +270,10 @@
       <div class="reportcontainer">
         <h3 class="fs-6 mb-3">Reportes</h3>
         <div id="Reportes">
-          <button class="reportes"> Descargar reporte de pacientes</button>
-          <button class="reportes1"> Descargar reporte de médicos</button>
-          <button class="reportes"> Descargar reporte de enfermeras</button>
-          <button class="reportes1"> Descargar reporte de medicamentos</button>
+          <button class="reportes" onclick="pdfpacientes()"> Descargar reporte de pacientes</button>
+          <button class="reportes1" onclick="pdfdoctores()"> Descargar reporte de médicos</button>
+          <button class="reportes" onclick="pdfenfermeras()"> Descargar reporte de enfermeras</button>
+          <button class="reportes1" onclick="pdfmedicamentos()"> Descargar reporte de medicamentos</button>
         </div>
       </div>
     </section>
@@ -283,7 +283,9 @@
 
 <!-- partial -->
 <script src="../admin/acciones.js"></script>
-  <script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
+<script src="../admin/pdf.js"></script>
+
+<script src='https://cdn.jsdelivr.net/npm/chart.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
 <script  src="./script.js"></script>
 </body>

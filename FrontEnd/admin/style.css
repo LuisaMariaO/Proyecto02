@@ -268,11 +268,11 @@ color: var(--dk-gray-400);
 	background-color: var(--dk-dark-bg);
   height: 100px;
 }
-
+/*Tabla de pacientes */
 #tablausers{
 	
-	height:447px;
-	width: 519px;
+	height:96%;
+	width: 106%;
 	overflow:auto;  
 
   }
@@ -284,6 +284,61 @@ color: var(--dk-gray-400);
 
  }
 #tablausers table{
+	margin-top: 20px;;
+}
+/** Tabla de médicos */
+#tablamedicos{
+	
+	height: 96%;
+	width: 106%;
+	overflow:auto;  
+
+  }
+#tablamedicos table th {
+	margin-top: -40px;  
+	position: sticky;
+	top: 0;
+	 background-color: white; 
+
+ }
+#tablamedicos table{
+	margin-top: 20px;;
+}
+
+/** Tabla de enfermeras */
+#tablaenfermeras{
+	
+	height:96%;
+	width: 106%;
+	overflow:auto;  
+
+  }
+#tablaenfermeras table th {
+	margin-top: -40px;  
+	position: sticky;
+	top: 0;
+	 background-color: white; 
+
+ }
+#tablaenfermeras table{
+	margin-top: 20px;;
+}
+/** Tabla de medicamentos */
+#tablamedicamentos{
+	
+	height:96%;
+	width: 106%;
+	overflow:auto;  
+
+  }
+#tablamedicamentos table th {
+	margin-top: -40px;  
+	position: sticky;
+	top: 0;
+	 background-color: white; 
+
+ }
+#tablamedicamentos table{
 	margin-top: 20px;;
 }
 
