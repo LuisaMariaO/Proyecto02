@@ -139,8 +139,12 @@
               <input id="usuario" type="text" placeholder="Nombre de usuario" class="forms_field-input" required />
             </div>
             <div class="forms_field">
-              <input id="pass" type="password" placeholder="Contraseña" class="forms_field-input" value="" required />
-            </div>
+              <input id="pass" type="password" placeholder="Contraseña" class="forms_field-input" value="" required required minlength="8" />
+              <script>
+              var input = document.getElementById('password');
+							input.invalid = function(event) { event.target.setCustomValidity('La contraseña debe contener por lo memons 8 caracteres'); }
+            </script>
+              </div>
             <div class="forms_field">
               <input id="number" type="number" placeholder="Número telefónico (opcional)" class="forms_field-input"/>
             </div>

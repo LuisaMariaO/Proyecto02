@@ -85,7 +85,7 @@ function CrearUsuario(){
     
         }
         else{
-            alert("La contraseña debe mantener al menos 8 caracteres")
+           
         }
       
     
@@ -94,9 +94,11 @@ function CrearUsuario(){
 function IniciarSesion(){
     let usuario = document.getElementById("iuser");
     let pass = document.getElementById("ipass");
-    if(usuario.value=="admin" && pass.value=="1234"){
-        alert(`Bienvenido Herbert`)
+    if(usuario.value=="" && pass.value==""){
+        /*
+        alert(`Bienvenido Herbert Reyes`)
                 window.location.href='../admin/inicio.html'
+                */
     }
     else{
         
@@ -119,8 +121,7 @@ function IniciarSesion(){
                             
                             if(data.nombre=="false"){
                             alert("Verifique sus iniciales")
-                               usuario.value='';
-                               pass.value='';
+                              
                             }else{
                                 alert(`Bienvenido enfermera(o): ${data.nombre}`)
                                 
@@ -134,8 +135,32 @@ function IniciarSesion(){
                 })
                
             }else{
+                if(data.user=="admin" && data.password=="1234"){
                 alert(`Bienvenido ${data.nombre}`)
+                window.location.href='../admin/inicio.html'
+
+                }
+                else{
                 
+                alert(`Bienvenido ${data.nombre}`)
+    fetch(`http://localhost:5000/setloguser/${usuario.value}`, {
+    method: 'POST',
+    headers,
+    body: `{
+        "user":"${usuario.value}"
+        
+      }`,
+  })
+  .then(response => response.json())
+  .then(result => {
+    console.log('Success:', result);
+    window.location.href='../Paciente/inicio.html'
+   
+  })
+  .then(
+   
+  )
+  }          
             }
         })
         

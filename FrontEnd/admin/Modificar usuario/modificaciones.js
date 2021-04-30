@@ -38,7 +38,7 @@ var telefono = document.getElementById("vnumber");
     */
 
    function actualizar(){ 
-     
+    
     let reque = `{
     "nombre":"${nombre.value}",
     "apellido":"${apellido.value}",

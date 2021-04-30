@@ -33,6 +33,12 @@ def obtenerenfermeras():
 @app.route('/obtenermedicamentos')
 def obtenermedicamentos():
     return gestor.obtener_medicamentos()
+@app.route('/obtenercitas')
+def obtenercitas():
+    return gestor.obtener_citas()
+
+
+
 #Login de pacientes
 @app.route('/login/<user>/<password>')
 def login(user,password):
@@ -54,6 +60,12 @@ def buscapacientes(user):
 def registrar():
     dato = request.json
     gestor.registrar_usuario(dato['nombre'],dato['apellido'],dato['fecha'],dato['sexo'],dato['user'],dato['password'],dato['telefono'])    
+    return '{"data":"Creado"}'
+#Creación de citas
+@app.route('/nuevacita',methods=['POST'])
+def registrarcita():
+    dato = request.json
+    gestor.registrar_cita(dato['paciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'])    
     return '{"data":"Creado"}'
 
 @app.route('/cargapacientes',methods=['POST'])
@@ -166,6 +178,16 @@ def eliminar_medicamento(nombre):
     if(gestor.eliminar_medicamento(nombre)):
         return '{"data":"Eliminado"}'
     return '{"data":"Error"}'
+
+#Validación de paciente que inició sesión
+@app.route('/setloguser/<user>',methods=['POST'])
+def setloguser(user):
+    gestor.setLoguser(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getloguser')
+def getloguser():
+    return gestor.getLoguser()   
 #INICIAR EL SERVIDOR
 
 if __name__ == "__main__":

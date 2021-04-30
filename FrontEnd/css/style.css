@@ -264,9 +264,14 @@ img {
 	width:100%;
 	height:100%;
 }
+i{
+	display: inline-block;
+	text-align: center;
+}
 .centro{
 	display: block;
 	margin: auto;
+	width: 80%;
 }
 .captionshop h3,.captionshop p {
 	color:#fff;
@@ -397,6 +402,24 @@ img {
 }
 .btn-buynow {
 	font-size:25px;
+	padding:14px 1px;
+	text-decoration:none;
+	color:#fff;
+	text-align:center;
+	font-weight:400;
+	border-bottom:5px solid rgba(0,0,0,0.1);
+	text-transform:uppercase;
+	border-radius:0;
+	width: 100%;
+	background:#33c9b9;
+}
+
+.cart{
+	display: block;
+	margin: auto;
+	width: 15px;
+	height: 15px;
+font-size:11px;
 	padding:14px 25px;
 	text-decoration:none;
 	color:#fff;
@@ -406,7 +429,7 @@ img {
 	text-transform:uppercase;
 	border-radius:0;
 	display:block;
-	background:#33c9b9;
+	background:#33c9b9;	
 }
 .rightarea-price .edd-cart-ajax-alert {
 	display:inline;
@@ -682,6 +705,43 @@ ul,ol {
 	border-bottom:2px solid orangered !Important;
 	transition:border linear 0.2s,box-shadow linear 0.2s;
 }
+
+/* CARDS */
+.card {
+	
+	height: 100vh;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 200px;
+	height: 300px;
+	
+  }
+
+  .card-body {
+	display: flex;
+	flex-direction: column;
+  }
+  button.btn {
+	margin-top: auto;
+  }
+  
+  .carro{
+
+	width: 100px;
+	height: 35px;
+
+	
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+	padding: 2px 16px;
+  }
 @media (min-width:768px) {
 	.navbar-lg .navbar-nav>li>a {
 		padding-top:26px;
