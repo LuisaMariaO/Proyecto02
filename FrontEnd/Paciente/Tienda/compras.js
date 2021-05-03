@@ -11,7 +11,7 @@ let text="";
 text=` 
 ` 
 
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://104.154.88.173:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;

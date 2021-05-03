@@ -12,7 +12,7 @@ var usuario = document.getElementById("vusuario");
 var pass = document.getElementById("vpass")
 var telefono = document.getElementById("vnumber");
     let viejo_user='';
-    fetch(`http://localhost:5000/getpaciente`) //Buscando el usuario seleccionado
+    fetch(`http://104.154.88.173:5000/getpaciente`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    viejo_user=data.user;
@@ -49,7 +49,7 @@ var telefono = document.getElementById("vnumber");
     "telefono":"${telefono.value}"
   }`
 
-  fetch('http://localhost:5000/actualizacion/'+viejo_user, {
+  fetch('http://104.154.88.173:5000/actualizacion/'+viejo_user, {
     method: 'PUT',
     headers,
     body: reque,

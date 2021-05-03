@@ -11,7 +11,7 @@ var nombre = document.getElementById("vnombre");
     var descripcion = document.getElementById("vdescripcion");
     var cantidad = document.getElementById("vcantidad");
     
-fetch(`http://localhost:5000/getmedicamento`) //Buscando el usuario seleccionado
+fetch(`http://104.154.88.173:5000/getmedicamento`) //Buscando el usuario seleccionado
 .then(response => response.json())
 .then(data => {
    nombre.value=data.nombre;

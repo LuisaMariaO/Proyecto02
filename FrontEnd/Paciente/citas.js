@@ -7,7 +7,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
 usuario='';
 var can=1;
 
-fetch(`http://localhost:5000/getloguser`) //Buscando el usuario seleccionado
+fetch(`http://104.154.88.173:5000/getloguser`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    usuario=data.user;
@@ -30,7 +30,7 @@ fetch(`http://localhost:5000/getloguser`) //Buscando el usuario seleccionado
     </thead>
     <tbody>`
     
-    fetch('http://localhost:5000/obtenercitas')
+    fetch('http://104.154.88.173:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -93,7 +93,7 @@ function generar_cita(){
         var hora = document.getElementById("hora");
         var motivo= document.getElementById("motivo");
                  
-        fetch('http://localhost:5000/nuevacita',
+        fetch('http://104.154.88.173:5000/nuevacita',
         {
             method:'POST',
             headers,

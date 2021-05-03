@@ -20,7 +20,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     var telefono = document.getElementById("telefono");
     let viejo_user='';
 
-    fetch(`http://localhost:5000/getlogenfermera`) //Buscando el usuario seleccionado
+    fetch(`http://104.154.88.173:5000/getlogenfermera`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    viejo_user=data.user;
@@ -47,7 +47,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
         "telefono":"${telefono.value}"
       }`
     
-      fetch('http://localhost:5000/actualizaenfermera/'+viejo_user, {
+      fetch('http://104.154.88.173:5000/actualizaenfermera/'+viejo_user, {
         method: 'PUT',
         headers,
         body: reque,

@@ -13,7 +13,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     var usuario = document.getElementById("vusuario");
     var pass = document.getElementById("vpass")
     var telefono = document.getElementById("vnumber");
-fetch(`http://localhost:5000/getenfermera`) //Buscando el usuario seleccionado
+fetch(`http://104.154.88.173:5000/getenfermera`) //Buscando el usuario seleccionado
 .then(response => response.json())
 .then(data => {
    nombre.value=data.nombre;
