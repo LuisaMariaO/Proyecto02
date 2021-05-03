@@ -76,6 +76,20 @@ def actualizarcita(id):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'  
 
+#Gestion de pedidos
+@app.route('/nuevopedido',methods=['POST'])
+def registrarpedido():
+    dato = request.json
+    gestor.registrar_pedido(dato['usuario'],dato['producto'],dato['precio'],dato['cantidad'])    
+    return '{"data":"Creado"}'
+
+@app.route('/actualizapedido/<id>',methods=['PUT'])
+def actualizarpedido(id):
+    dato = request.json
+    print(dato)
+    if gestor.actualizar_pedido(id,dato['usuario'],dato['producto'],dato['precio'],dato['cantidad']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
 
 @app.route('/cargapacientes',methods=['POST'])
 def cargap():

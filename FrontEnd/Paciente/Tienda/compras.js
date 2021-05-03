@@ -5,7 +5,13 @@ headers.append('Accept', 'application/json');
 headers.append('Access-Control-Allow-Origin', 'http://localhost:5000');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
+usuario=''
+fetch(`http://104.154.88.173:5000/getloguser`) //Buscando el usuario seleccionado
+    .then(response => response.json())
+    .then(data => {
+   usuario=data.user;
 
+    })
 //Carga de Medicamentos disponibles
 let text="";
 text=` 
@@ -29,7 +35,7 @@ fetch('http://104.154.88.173:5000/obtenermedicamentos')
         </div>
         
        
-        <button  class="btn btn-danger card-footer" style="margin-left:10px; margin-bottom:1px" onclick="pedido('${data[i].nombre}')"> <i class="fa fa-shopping-cart iboton"></i> Agregar</button>
+        <button  class="btn btn-danger card-footer" style="margin-left:10px; margin-bottom:1px" onclick="pedido('${data[i].nombre}','${data[i].precio}')"> <i class="fa fa-shopping-cart iboton"></i> Agregar</button>
   
         </div>
         </div>
@@ -40,9 +46,40 @@ fetch('http://104.154.88.173:5000/obtenermedicamentos')
     
     document.getElementById("tienda").innerHTML = text;
 });
-function pedido(medicamento){
+function pedido(medicamento,precio){
+
+
 
 let lista=""
 lista=`<li> ${medicamento} </li>`
 document.getElementById("Lista").innerHTML+=lista;
-}
+
+
+
+fetch('http://104.154.88.173:5000/nuevopedido',
+        {
+            method:'POST',
+            headers,
+            body: `{
+                    "usuario":"${usuario}",
+                    "producto":"${medicamento}",
+                    "precio":"${precio}",
+                    "cantidad":"1"
+         
+                    }`
+        })
+        .then(response => response.json())
+        .then(
+            result => {
+                
+        
+              }
+        )
+        .catch(
+            error => {
+                console.error('Error:', error);
+               
+                alert('Agregando al carrito')
+              }
+        )  
+    }

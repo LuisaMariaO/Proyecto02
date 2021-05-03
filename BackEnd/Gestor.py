@@ -3,6 +3,7 @@ from Medicos import Medico
 from Enfermeras import Enfermera
 from Medicamentos import Medicamento
 from cita import Cita
+from Pedidos import Pedido
 import json
 import re
 #Aloja el paciente a ver, modificar o eliminar
@@ -23,6 +24,8 @@ logmedico=''
 
 #ID citas
 idcita=0
+#ID pedidos
+idpedido=0
 class Gestor:
 
 
@@ -32,16 +35,16 @@ class Gestor:
         self.enfermeras=[]
         self.medicamentos=[]
         self.citas=[]
-    
+        self.pedidos=[]
+
         self.usuarios.append(Usuario("Herbert","Reyes","None","M","admin","1234","m"))
-        self.usuarios.append(Usuario("Alina","Starkov","None","F","invocasol","ben"," "))
-        self.usuarios.append(Usuario("Mal","Orskov","None","M","idiota","rastreador"," "))
+        
         #Medicos
-        self.medicos.append(Medico("Shaun","Murphy","12/05/1997","M","shaunm","abcd","Cirujano",""))
+        
         #Enfermeras
-        self.enfermeras.append(Enfermera("Amy","Duncan","10/08/1977","F","amyd","charlie","45968745"))
+       
         #Medicamentoss
-        self.medicamentos.append(Medicamento("0","Loratadina","10.00","Antialérgico","100"))
+        
 
 
         #Usuario seleccionado
@@ -63,7 +66,10 @@ class Gestor:
         return json.dumps([ob.__dict__ for ob in self.medicamentos])
 
     def obtener_citas(self):
-        return json.dumps([ob.__dict__ for ob in self.citas])        
+        return json.dumps([ob.__dict__ for ob in self.citas])  
+
+    def obtener_pedidos(self):
+        return json.dumps([ob.__dict__ for ob in self.pedidos])          
     #Update
 
     #Delete
@@ -116,6 +122,18 @@ class Gestor:
                 return True
         return False   
 
+    #Registro de pedidos
+    def registrar_pedido(self,usuario,producto,precio,cantidad):
+        global idpedido
+        idpedido=idpedido+1
+        self.pedidos.append(Pedido(idpedido, usuario, producto, precio, cantidad))
+
+    def actualizar_pedido(self,id,usuario,producto,precio,cantidad):
+        for x in self.pedidos:
+            if x.id==int(id) or x.id==id:
+                self.pedidos[self.pedidos.index(x)]=Pedido(id, usuario, producto, precio, cantidad)
+                return True
+        return False       
     #Buscar pacientes
     def buscar_pacientes(self,user):
         for x in self.usuarios:
