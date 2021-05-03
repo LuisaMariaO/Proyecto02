@@ -36,6 +36,9 @@ def obtenermedicamentos():
 @app.route('/obtenercitas')
 def obtenercitas():
     return gestor.obtener_citas()
+@app.route('/obtenerpedidos')
+def obtenerpedidos():
+    return gestor.obtener_pedidos()()    
 
 
 
