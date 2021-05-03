@@ -17,10 +17,11 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     var sexo = document.getElementById("sexo");
     var usuario = document.getElementById("usuario");
     var pass = document.getElementById("password")
+    var especialidad = document.getElementById("especialidad");
     var telefono = document.getElementById("telefono");
     let viejo_user='';
 
-    fetch(`http://localhost:5000/getloguser`) //Buscando el usuario seleccionado
+    fetch(`http://localhost:5000/getlogmedico`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    viejo_user=data.user;
@@ -30,13 +31,13 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
    sexo.value=data.sexo;
    usuario.value=data.user;
    pass.value=data.password;
+   especialidad.value=data.especialidad;
    telefono.value=data.telefono;
     })
     .then(
      
     )
-    
-function actualizar(){ 
+    function actualizar(){ 
      
         let reque = `{
         "nombre":"${nombre.value}",
@@ -45,10 +46,11 @@ function actualizar(){
         "sexo":"${sexo.value}",
         "user":"${usuario.value}",
         "password":"${pass.value}",
+        "especialidad":"${especialidad.value}",
         "telefono":"${telefono.value}"
       }`
     
-      fetch('http://localhost:5000/actualizacion/'+viejo_user, {
+      fetch('http://localhost:5000/actualizamedico/'+viejo_user, {
         method: 'PUT',
         headers,
         body: reque,

@@ -222,7 +222,7 @@
               <input type="file"   id="carga" name="carga"
               accept=".csv"><br><br>
               <button style="background-color:cadetblue ;" onclick="cargar()" > Cargar </button>
-            
+           
             <p class="lead"></p>
           </div>
         </div>
@@ -233,12 +233,12 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <div class="box bg-white-3" id="Cargas"> 
             <i class="uil-file-medical"></i> Cargar doctores
-            <form  class="archivos" onsubmit="return false"> <p></p>
+            <form  class="archivos" onsubmit="return false;"> <p></p>
               <label for=" cargamed" class="archivos">Seleccione un archivo:</label>
               
               <input type="file" id="cargamed" name="cargamed" accept=".csv" class="archivos"><br><br>
               <button style="background-color:cadetblue ;" onclick="cargarmedicos()" > Cargar </button>
-            <p class="lead"></p>
+            <p class="lead"></p> </form>
           </div>
         </div>
        
@@ -248,11 +248,11 @@
         <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
           <div class="box bg-white p-3" id="Cargas">
             <i class="uil-pen"></i> Cargar enfermeras <p></p>
-            <form action="" class="archivos" onsubmit="return false">
+            <form action="" class="archivos" onsubmit="return false;">
               <label for="myfile3" class="archivos">Seleccione un archivo:</label>
               <input type="file" id="cargaenf" accept=".csv"  class="archivos"><br><br>
-              <button style="background-color:cadetblue ;" onclick="cargarenfermeras()" > Cargar </button>
-            
+              <button style="background-color:cadetblue ;" onclick="cargarenfermeras();" > Cargar </button>
+            </form>
             <p class="lead"></p>
           </div>
         </div>

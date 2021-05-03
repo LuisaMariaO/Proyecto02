@@ -4,6 +4,7 @@ headers.append('Accept', 'application/json');
 headers.append('Access-Control-Allow-Origin', 'http://localhost:5000');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
+    var id='';
     var nombre = document.getElementById("vnombre");
     var precio = document.getElementById("vprecio");
     var descripcion = document.getElementById("vdescripcion");
@@ -12,6 +13,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     fetch(`http://localhost:5000/getmedicamento`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
+   id=data.id;  
    viejo_nombre=data.nombre;
    nombre.value=data.nombre;
    precio.value=data.precio;
@@ -34,6 +36,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
    function actualizar(){ 
      
     let reque = `{
+    "id":"${id.value}",  
     "nombre":"${nombre.value}",
     "precio":"${precio.value}",
     "descripcion":"${descripcion.value}",

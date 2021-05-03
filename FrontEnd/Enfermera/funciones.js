@@ -20,7 +20,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     var telefono = document.getElementById("telefono");
     let viejo_user='';
 
-    fetch(`http://localhost:5000/getloguser`) //Buscando el usuario seleccionado
+    fetch(`http://localhost:5000/getlogenfermera`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    viejo_user=data.user;
@@ -35,8 +35,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     .then(
      
     )
-    
-function actualizar(){ 
+    function actualizar(){ 
      
         let reque = `{
         "nombre":"${nombre.value}",
@@ -48,7 +47,7 @@ function actualizar(){
         "telefono":"${telefono.value}"
       }`
     
-      fetch('http://localhost:5000/actualizacion/'+viejo_user, {
+      fetch('http://localhost:5000/actualizaenfermera/'+viejo_user, {
         method: 'PUT',
         headers,
         body: reque,

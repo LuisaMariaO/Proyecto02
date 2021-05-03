@@ -13,18 +13,26 @@ vmedico=''
 venfermera=''
 #Aloja el medicamento a ver, modificar o eliminar
 vmedicamento=''
-
+idmedicamento=0
 #Aloja los usuarios que inician sesión
 logpaciente=''
+#Aloja las enfermeras que inician sesión
+logenfermera=''
+#Aloja los médicos que inician sesión
+logmedico=''
+
+#ID citas
+idcita=0
 class Gestor:
-      
+
+
     def __init__(self):
         self.usuarios =[]
         self.medicos=[]
         self.enfermeras=[]
         self.medicamentos=[]
         self.citas=[]
-        self.citas.append(Cita("Belen","5","5","F","Pendiente"))
+    
         self.usuarios.append(Usuario("Herbert","Reyes","None","M","admin","1234","m"))
         self.usuarios.append(Usuario("Alina","Starkov","None","F","invocasol","ben"," "))
         self.usuarios.append(Usuario("Mal","Orskov","None","M","idiota","rastreador"," "))
@@ -33,7 +41,7 @@ class Gestor:
         #Enfermeras
         self.enfermeras.append(Enfermera("Amy","Duncan","10/08/1977","F","amyd","charlie","45968745"))
         #Medicamentoss
-        self.medicamentos.append(Medicamento("Loratadina","10.00","Antialérgico","100"))
+        self.medicamentos.append(Medicamento("0","Loratadina","10.00","Antialérgico","100"))
 
 
         #Usuario seleccionado
@@ -90,10 +98,24 @@ class Gestor:
         self.enfermeras.append(Enfermera(nombre,apellido,fecha,sexo,user,password,telefono))
     #Registrar medicamentos
     def registrar_medicamento(self,nombre,precio,descripcion,cantidad):
-        self.medicamentos.append(Medicamento(nombre,precio,descripcion,cantidad))  
+        global idmedicamento
+        idmedicamento=idmedicamento+1
+        self.medicamentos.append(Medicamento(idmedicamento,nombre,precio,descripcion,cantidad))  
     #Registrar cita
-    def registrar_cita(self,paciente,fecha,hora,motivo,estado):
-        self.citas.append(Cita(paciente,fecha,hora,motivo,estado))            
+    def registrar_cita(self,paciente,fecha,hora,motivo,estado,usermedico,medico):
+        global idcita
+        idcita=idcita+1
+        self.citas.append(Cita(idcita,paciente,fecha,hora,motivo,estado,usermedico,medico))
+
+    def actualizar_cita(self,id,paciente,fecha,hora,motivo,estado,usermedico,medico):
+    
+        for x in self.citas:
+            if x.id==int(id) or x.id==id:
+                
+                self.citas[self.citas.index(x)]=Cita(id, paciente, fecha, hora, motivo, estado,usermedico, medico)
+                return True
+        return False   
+
     #Buscar pacientes
     def buscar_pacientes(self,user):
         for x in self.usuarios:
@@ -102,11 +124,11 @@ class Gestor:
         return '{"user":"false"}'    
     #Carga masiva de pacientes            
     def cargamasiva(self,data):
-        hola = re.split('\n',data)
-        print(hola[0])
+        datos = re.split('\n',data)
+        print(datos[0])
         i=1
-        while i < len(hola):
-            texto = re.split(',',hola[i])
+        while i < len(datos):
+            texto = re.split(',',datos[i])
             self.registrar_usuario(texto[0],texto[1],texto[2],texto[3],texto[4],texto[5],texto[6])
             i = i+1 
     #Carga masiva médicos
@@ -133,6 +155,7 @@ class Gestor:
         print(hola[0])
         i=1
         while i < len(hola):
+            global idmedicamento
             texto = re.split(',',hola[i])
             self.registrar_medicamento(texto[0],texto[1],texto[2],texto[3])
             i = i+1 
@@ -225,10 +248,10 @@ class Gestor:
             if x.nombre==vmedicamento:
                 return json.dumps(x.__dict__)
         return '{"nombre":"false"}'
-    def actualizar_medicamento(self,nombreviejo,nombrenuevo,precio,descripcion,cantidad):
+    def actualizar_medicamento(self,nombreviejo,id,nombrenuevo,precio,descripcion,cantidad):
         for x in self.medicamentos:
             if x.nombre==nombreviejo:
-                self.medicamentos[self.medicamentos.index(x)]=Medicamento(nombrenuevo,precio,descripcion,cantidad)
+                self.medicamentos[self.medicamentos.index(x)]=Medicamento(id,nombrenuevo,precio,descripcion,cantidad)
                 return True
         return False
          
@@ -249,4 +272,25 @@ class Gestor:
         global logpaciente
         for x in self.usuarios:
             if x.user==logpaciente:
-                return json.dumps(x.__dict__)                    
+                return json.dumps(x.__dict__)    
+
+    #Usuario enfermera que inicia sesión
+    def setLogenfermera(self,enfermera):
+        global logenfermera
+        logenfermera=enfermera
+        
+    def getLogenfermera(self):
+        global logenfermera
+        for x in self.enfermeras:
+            if x.user==logenfermera:
+                return json.dumps(x.__dict__)  
+    #Medico que inicia sesion
+    def setLogmedico(self,medico):
+        global logmedico
+        logmedico=medico
+        
+    def getLogmedico(self):
+        global logmedico
+        for x in self.medicos:
+            if x.user==logmedico:
+                return json.dumps(x.__dict__)                                         

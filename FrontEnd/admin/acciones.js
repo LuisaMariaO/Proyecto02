@@ -867,8 +867,9 @@ function cargarmedicos(){
             .then(response => response.json())
             .then(result => {
                 console.log('Success:', result);
-                arachivo.value=''
                 alert("¡Médicos cargados con éxito!")
+                arachivo.value=''
+                
                 actualizarmedicos()
             })
             .catch(error => {

@@ -65,11 +65,21 @@ def registrar():
 @app.route('/nuevacita',methods=['POST'])
 def registrarcita():
     dato = request.json
-    gestor.registrar_cita(dato['paciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'])    
+    gestor.registrar_cita(dato['paciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'],dato['usermedico'],dato['medico'])    
     return '{"data":"Creado"}'
+
+@app.route('/actualizacita/<id>',methods=['PUT'])
+def actualizarcita(id):
+    dato = request.json
+    print(dato)
+    if gestor.actualizar_cita(id,dato['paciente'],dato['fecha'],dato['hora'],dato['motivo'],dato['estado'],dato['usermedico'],dato['medico']):
+        return '{"data":"Actualizado"}'
+    return '{"data":"Error"}'  
+
 
 @app.route('/cargapacientes',methods=['POST'])
 def cargap():
+    
     dato = request.json
     gestor.cargamasiva(dato['data'])
     return '{"data":"Cargados"}'
@@ -169,7 +179,7 @@ def getmedicamento():
 @app.route('/actualizamedicamento/<nombre>',methods=['PUT'])
 def actualizamedicamento(nombre):
     dato = request.json
-    if gestor.actualizar_medicamento(nombre,dato['nombre'],dato['precio'],dato['descripcion'],dato['cantidad']):
+    if gestor.actualizar_medicamento(nombre,dato['id'],dato['nombre'],dato['precio'],dato['descripcion'],dato['cantidad']):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'  
              
@@ -187,7 +197,27 @@ def setloguser(user):
 
 @app.route('/getloguser')
 def getloguser():
-    return gestor.getLoguser()   
+    return gestor.getLoguser() 
+
+#Validación de enfermera que inició sesión
+@app.route('/setlogenfermera/<user>',methods=['POST'])
+def setlogenfermera(user):
+    gestor.setLogenfermera(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getlogenfermera')
+def getlogenfermera():
+    return gestor.getLogenfermera() 
+
+#Validación de medico que inició sesión
+@app.route('/setlogmedico/<user>',methods=['POST'])
+def setlogmedico(user):
+    gestor.setLogmedico(user)
+    return '{"data":"Entregado"}' 
+
+@app.route('/getlogmedico')
+def getlogmedico():
+    return gestor.getLogmedico()          
 #INICIAR EL SERVIDOR
 
 if __name__ == "__main__":

@@ -120,16 +120,49 @@ function IniciarSesion(){
                         .then(data => {
                             
                             if(data.nombre=="false"){
-                            alert("Verifique sus iniciales")
+                            alert("Verifique sus credenciales")
                               
                             }else{
                                 alert(`Bienvenido enfermera(o): ${data.nombre}`)
-                                
+                                fetch(`http://localhost:5000/setlogenfermera/${usuario.value}`, {
+                                    method: 'POST',
+                                    headers,
+                                    body: `{
+                                        "user":"${usuario.value}"
+                                        
+                                      }`,
+                                  })
+                                  .then(response => response.json())
+                                  .then(result => {
+                                    console.log('Success:', result);
+                                    window.location.href='../Enfermera/inicio.html'
+                                   
+                                  })
+                                  .then(
+                                   
+                                  )
                             }
                         })
                        
                     }else{
                         alert(`Bienvenido doctor(a): ${data.nombre}`)
+                        fetch(`http://localhost:5000/setlogmedico/${usuario.value}`, {
+                            method: 'POST',
+                            headers,
+                            body: `{
+                                "user":"${usuario.value}"
+                                
+                              }`,
+                          })
+                          .then(response => response.json())
+                          .then(result => {
+                            console.log('Success:', result);
+                            window.location.href='../Medico/inicio.html'
+                           
+                          })
+                          .then(
+                           
+                          ) 
                         
                     }
                 })
