@@ -2,10 +2,12 @@ from Usuarios import Usuario
 from Medicos import Medico
 from Enfermeras import Enfermera
 from Medicamentos import Medicamento
+from Padecimientos import Padecimiento
 from cita import Cita
 from Pedidos import Pedido
 import json
 import re
+import collections
 #Aloja el paciente a ver, modificar o eliminar
 vpaciente=''  
 #Aloja el medico a ver, modificar o eliminar
@@ -36,6 +38,7 @@ class Gestor:
         self.medicamentos=[]
         self.citas=[]
         self.pedidos=[]
+        self.padecimientos=[]
 
         self.usuarios.append(Usuario("Herbert","Reyes","None","M","admin","1234","m"))
         
@@ -69,7 +72,13 @@ class Gestor:
         return json.dumps([ob.__dict__ for ob in self.citas])  
 
     def obtener_pedidos(self):
-        return json.dumps([ob.__dict__ for ob in self.pedidos])          
+        return json.dumps([ob.__dict__ for ob in self.pedidos])       
+
+    def obtenener_padecimientos(self):
+        cuenta = collections.Counter(self.padecimientos)
+        print(cuenta)
+        return json.dumps([ob.__dict__ for ob in self.padecimientos])  
+
     #Update
 
     #Delete
@@ -128,12 +137,21 @@ class Gestor:
         idpedido=idpedido+1
         self.pedidos.append(Pedido(idpedido, usuario, producto, precio, cantidad))
 
-    def actualizar_pedido(self,id,usuario,producto,precio,cantidad):
+    def actualizar_pedido(self,usuario,producto,precio,cantidad):
         for x in self.pedidos:
-            if x.id==int(id) or x.id==id:
-                self.pedidos[self.pedidos.index(x)]=Pedido(id, usuario, producto, precio, cantidad)
+            if x.producto==producto:
+                self.pedidos[self.pedidos.index(x)]=Pedido(0, usuario, producto, precio, cantidad)
                 return True
         return False       
+
+    def eliminar_pedidos(self):
+        for x in self.pedidos:
+             self.pedidos.remove(x)
+             print("Hola")
+             continue        
+        return True
+    def registrar_padecimiento(self,nombre):
+        self.padecimientos.append(Padecimiento(nombre))
     #Buscar pacientes
     def buscar_pacientes(self,user):
         for x in self.usuarios:
@@ -312,3 +330,5 @@ class Gestor:
         for x in self.medicos:
             if x.user==logmedico:
                 return json.dumps(x.__dict__)                                         
+
+                

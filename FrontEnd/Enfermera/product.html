@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pedido de medicamentos</title>
+<title>Facturación</title>
 <link rel="shortcut icon" type="image/x-icon" href="../images/icon.ico">	
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@
 		<div id="navbar-collapse-02" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="propClone"><a href="../index.html">Inicio</a></li>
-				<li class="propClone"><a href="../Paciente/inicio.html">Regresar</a></li>
+				<li class="propClone"><a href="../Enfermera/inicio.html">Regresar</a></li>
 			
 			</ul>
 		</div>
@@ -40,7 +40,7 @@
 			<div class="col-md-12 text-center">
 				<div class="text-pageheader">
 					<div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.0s">
-						 Tienda en línea
+						
 					</div>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 <div class="container toparea">
 	<div class="underlined-title">
 		<div class="editContent">
-			<h1 class="text-center latestitems">Medicamentos disponibles</h1>
+			<h1 class="text-center latestitems">Factura</h1>
 		</div>
 		<div class="wow-hr type_short">
 			<span class="wow-hr-h">
@@ -70,21 +70,32 @@
 		
 			
 				<br/>
-				<div class="container" id="tienda" style="width: 100%;"> 
-					
+				<div class="container" id="Hola"  style="width: 100%;"> 
+					<form onsubmit="return false;">
+						<label for="fecha">Fecha</label> <br>
+						<input type="date" id="fecha">
+						<br><br>
+						<label for="paciente">Paciente</label><br>
+						<input type="text" id="paciente">
+						<br><br>
+						<label for="medicos">Doctor</label><br>
+						<div id="medicos"></div>
+						<label for="costoo">Costo operación (Q)</label><br>
+						<input type="number" id="costoo"><br>
+						<label for="costoi">Costo internado (Q)</label><br>
+						<input type="number" id="costoi" ><br>
+						<label for="total" style="float: right;">Total (Q)</label>
+						<input type="number" id="total" style="float: right;"><br><br><br>
+						<button class="btn btn-buynow" style="width: 100px; font-size: small;" onclick="facturar()"> Generar</button>
+						<script>
+							
+						</script>
+					</form>
 			</div>		
 			</div>
 		</div>
 
 		<div class="col-md-4">
-			<a href="#" class="btn btn-buynow">Checkout</a>
-			<div class="properties-box">
-				<ol class="unstyle">
-				*Puedes quitar medicamentos seleccionados en el checkout
-			
-				</ol>
-				<i class="fa fa-shopping-cart"> Medicamentos seleccionados:</i>
-				<div id="Lista"></div>
 			
 			</div>
 		</div>
@@ -129,7 +140,7 @@
 </div>
 
 <!-- Load JS here for greater good =============================-->
-<script src="../Paciente/Tienda/compras.js"></script>
+<script src="../Enfermera/facturas.js"></script>
 <script src="../js/jquery-.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/anim.js"></script>

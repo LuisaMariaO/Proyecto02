@@ -25,7 +25,7 @@ var can=1;
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenercitas')
+    fetch('http://localhost:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -64,7 +64,7 @@ document.getElementById("medicos").innerHTML='';
     <select id="opciones" name="lineas">
     `
     
-    fetch('http://104.154.88.173:5000/obtenermedicos')
+    fetch('http://localhost:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -108,7 +108,7 @@ let reque = `{
     "medico":"${nombre}"
   }`
 
-  fetch('http://104.154.88.173:5000/actualizacita/'+id, {
+  fetch('http://localhost:5000/actualizacita/'+id, {
     method: 'PUT',
     headers,
     body: reque,
@@ -145,7 +145,7 @@ function rechazar(id,paciente,fecha,hora,motivo){
         "medico":"${nombre}"
       }`
     
-      fetch('http://104.154.88.173:5000/actualizacita/'+id, {
+      fetch('http://localhost:5000/actualizacita/'+id, {
         method: 'PUT',
         headers,
         body: reque,
@@ -181,7 +181,7 @@ function actualizacita(){
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenercitas')
+    fetch('http://localhost:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;

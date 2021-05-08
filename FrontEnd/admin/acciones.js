@@ -18,7 +18,7 @@ function convertirdata(paciente){
   
   function pdfpacientes(){
     
-    fetch('http://104.154.88.173:5000/obtenerusuarios')
+    fetch('http://localhost:5000/obtenerusuarios')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -34,8 +34,10 @@ function convertirdata(paciente){
       // Insertando los datos
      
       let datos=[]
-      for(let i =0;i<data.length;i++){
+      for(let i =1;i<data.length;i++){
+       
         datos.push(Object.assign({},convertirdata(data[i])))
+        
       }
       console.log(datos)
       var contentJsPdf = {
@@ -70,7 +72,7 @@ function convertirdata(paciente){
   
   function pdfdoctores(){
     
-    fetch('http://104.154.88.173:5000/obtenermedicos')
+    fetch('http://localhost:5000/obtenermedicos')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -122,7 +124,7 @@ function convertirdata(paciente){
   
   function pdfenfermeras(){
     
-    fetch('http://104.154.88.173:5000/obtenerenfermeras')
+    fetch('http://localhost:5000/obtenerenfermeras')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -168,7 +170,7 @@ function convertirdata(paciente){
   }
   function pdfmedicamentos(){
     
-    fetch('http://104.154.88.173:5000/obtenermedicamentos')
+    fetch('http://localhost:5000/obtenermedicamentos')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -226,7 +228,7 @@ text = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenerusuarios')
+fetch('http://localhost:5000/obtenerusuarios')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -253,6 +255,7 @@ fetch('http://104.154.88.173:5000/obtenerusuarios')
     text+=`</tbody>
             </table>`
     document.getElementById("tablausers").innerHTML = text;
+    document.getElementById("nopacientes").innerHTML=cuentap-1;
 });
 }
 
@@ -272,13 +275,14 @@ text2 = `
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenermedicos')
+fetch('http://localhost:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;
-
+    var cuentam=0;
     
     for(i=0;i<data.length;i++){
+      cuentam++;
         text2+= `
                 <tr>
                 <td>${i+1}</td>
@@ -296,6 +300,8 @@ fetch('http://104.154.88.173:5000/obtenermedicos')
     text2+=`</tbody>
             </table>`
     document.getElementById("tablamedicos").innerHTML = text2;
+    document.getElementById("nomedicos").innerHTML = cuentam;
+    
 });
 }
 function actualizarenfermeras(){
@@ -314,14 +320,14 @@ function actualizarenfermeras(){
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenerenfermeras')
+    fetch('http://localhost:5000/obtenerenfermeras')
     .then(response => response.json())
     .then(data =>{
         var i;
-    
+        var cuentaenf=0;
         
         for(i=0;i<data.length;i++){
-      
+            cuentaenf++;
             text3+= `
                     <tr>
                     <td>${i+1}</td>
@@ -340,6 +346,7 @@ function actualizarenfermeras(){
         text3+=`</tbody>
                 </table>`
         document.getElementById("tablaenfermeras").innerHTML = text3;
+        document.getElementById("noenfermeras").innerHTML = cuentaenf;
     });   
 }
 
@@ -359,7 +366,7 @@ text4 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenermedicamentos')
+fetch('http://localhost:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -403,14 +410,14 @@ text = `
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenerusuarios')
+fetch('http://localhost:5000/obtenerusuarios')
 .then(response => response.json())
 .then(data =>{
     var i;
     var cuentap=0;
     
     for(i=0;i<data.length;i++){
-        cuentap++;
+       cuentap++;
         if(data[i].user!="admin"){
         text+= `
                 <tr>
@@ -430,6 +437,7 @@ fetch('http://104.154.88.173:5000/obtenerusuarios')
     text+=`</tbody>
             </table>`
     document.getElementById("tablausers").innerHTML = text;
+    document.getElementById("nopacientes").innerHTML=cuentap-1;
 });
 
 //Carga de Médicos
@@ -447,13 +455,14 @@ text2 = `
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenermedicos')
+fetch('http://localhost:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;
-
+    var cuentam=0;
     
     for(i=0;i<data.length;i++){
+      cuentam++;
         text2+= `
                 <tr>
                 <td>${i+1}</td>
@@ -471,6 +480,7 @@ fetch('http://104.154.88.173:5000/obtenermedicos')
     text2+=`</tbody>
             </table>`
     document.getElementById("tablamedicos").innerHTML = text2;
+    document.getElementById("nomedicos").innerHTML = cuentam;
 });
 //Carga de Enfermeras
 let text3=""
@@ -487,14 +497,14 @@ text3 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenerenfermeras')
+fetch('http://localhost:5000/obtenerenfermeras')
 .then(response => response.json())
 .then(data =>{
     var i;
-
+    var cuentaenf=0;
     
     for(i=0;i<data.length;i++){
-  
+        cuentaenf++
         text3+= `
                 <tr>
                 <td>${i+1}</td>
@@ -513,6 +523,7 @@ fetch('http://104.154.88.173:5000/obtenerenfermeras')
     text3+=`</tbody>
             </table>`
     document.getElementById("tablaenfermeras").innerHTML = text3;
+    document.getElementById("noenfermeras").innerHTML = cuentaenf;
 });
 //Carga de Medicamentos
 let text4=""
@@ -529,7 +540,7 @@ text4 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://104.154.88.173:5000/obtenermedicamentos')
+fetch('http://localhost:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -559,7 +570,7 @@ fetch('http://104.154.88.173:5000/obtenermedicamentos')
 
 function verusuario(usuario){
   //let user = usuario
-  fetch(`http://104.154.88.173:5000/setpaciente/${usuario}`, {
+  fetch(`http://localhost:5000/setpaciente/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -587,7 +598,7 @@ function verusuario(usuario){
 
 function modificarusuario(usuario){
 
-fetch(`http://104.154.88.173:5000/setpaciente/${usuario}`, {
+fetch(`http://localhost:5000/setpaciente/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -598,17 +609,19 @@ fetch(`http://104.154.88.173:5000/setpaciente/${usuario}`, {
 .then(response => response.json())
 .then(result => {
   console.log('Success:', result);
-  window.open('../admin/Modificar usuario/modifica.html','winpop','width=750,height=1000')
+ ventana= window.open('../admin/Modificar usuario/modifica.html','winpop','width=750,height=1000')
 
 })
+
 .catch(error => {
   console.error('Error:', error);
 });
 
+
 }
 function eliminarusuario(usuario){
  
-  fetch('http://104.154.88.173:5000/eliminarpaciente/'+usuario,{
+  fetch('http://localhost:5000/eliminarpaciente/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -621,7 +634,7 @@ function eliminarusuario(usuario){
 //Acciones para los botones de la tabla de médicos
 function vermedico(usuario){
   //let user = usuario
-  fetch(`http://104.154.88.173:5000/setmedico/${usuario}`, {
+  fetch(`http://localhost:5000/setmedico/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -649,7 +662,7 @@ function vermedico(usuario){
 
 function modificarmedico(usuario){
 
-fetch(`http://104.154.88.173:5000/setmedico/${usuario}`, {
+fetch(`http://localhost:5000/setmedico/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -670,7 +683,7 @@ fetch(`http://104.154.88.173:5000/setmedico/${usuario}`, {
 }
 function eliminarmedico(usuario){
  
-  fetch('http://104.154.88.173:5000/eliminarmedico/'+usuario,{
+  fetch('http://localhost:5000/eliminarmedico/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -683,7 +696,7 @@ function eliminarmedico(usuario){
 
 //Acciones para los botones de la tabla de enfermeras
 function verenfermera(usuario){
-  fetch(`http://104.154.88.173:5000/setenfermera/${usuario}`, {
+  fetch(`http://localhost:5000/setenfermera/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -711,7 +724,7 @@ function verenfermera(usuario){
 
 function modificarenfermera(usuario){
 
-fetch(`http://104.154.88.173:5000/setenfermera/${usuario}`, {
+fetch(`http://localhost:5000/setenfermera/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -733,7 +746,7 @@ fetch(`http://104.154.88.173:5000/setenfermera/${usuario}`, {
 
 function eliminarenfermera(usuario){
  
-  fetch('http://104.154.88.173:5000/eliminarenfermera/'+usuario,{
+  fetch('http://localhost:5000/eliminarenfermera/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -746,7 +759,7 @@ function eliminarenfermera(usuario){
 
 //Acciones para los botones de la tabla de medicamentos
 function vermedicamento(nombre){
-  fetch(`http://104.154.88.173:5000/setmedicamento/${nombre}`, {
+  fetch(`http://localhost:5000/setmedicamento/${nombre}`, {
     method: 'POST',
     headers,
     body: `{
@@ -774,7 +787,7 @@ function vermedicamento(nombre){
 
 function modificarmedicamento(nombre){
 
-fetch(`http://104.154.88.173:5000/setmedicamento/${nombre}`, {
+fetch(`http://localhost:5000/setmedicamento/${nombre}`, {
   method: 'POST',
   headers,
   body: `{
@@ -796,7 +809,7 @@ fetch(`http://104.154.88.173:5000/setmedicamento/${nombre}`, {
 
 function eliminarmedicamento(nombre){
  
-  fetch('http://104.154.88.173:5000/eliminarmedicamento/'+nombre,{
+  fetch('http://localhost:5000/eliminarmedicamento/'+nombre,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -820,7 +833,7 @@ function cargar(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://104.154.88.173:5000/cargapacientes', {
+            fetch('http://localhost:5000/cargapacientes', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -859,7 +872,7 @@ function cargarmedicos(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://104.154.88.173:5000/cargamedicos', {
+            fetch('http://localhost:5000/cargamedicos', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -899,7 +912,7 @@ function cargarenfermeras(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://104.154.88.173:5000/cargaenfermeras', {
+            fetch('http://localhost:5000/cargaenfermeras', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -938,7 +951,7 @@ function cargarmedicamentos(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://104.154.88.173:5000/cargamedicamentos', {
+            fetch('http://localhost:5000/cargamedicamentos', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),

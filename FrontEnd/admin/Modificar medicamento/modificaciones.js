@@ -10,7 +10,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     var descripcion = document.getElementById("vdescripcion");
     var cantidad = document.getElementById("vcantidad");
     let viejo_user='';
-    fetch(`http://104.154.88.173:5000/getmedicamento`) //Buscando el usuario seleccionado
+    fetch(`http://localhost:5000/getmedicamento`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    id=data.id;  
@@ -43,7 +43,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
     "cantidad":"${cantidad.value}"
   }`
 
-  fetch('http://104.154.88.173:5000/actualizamedicamento/'+viejo_nombre, {
+  fetch('http://localhost:5000/actualizamedicamento/'+viejo_nombre, {
     method: 'PUT',
     headers,
     body: reque,

@@ -38,7 +38,7 @@ def obtenercitas():
     return gestor.obtener_citas()
 @app.route('/obtenerpedidos')
 def obtenerpedidos():
-    return gestor.obtener_pedidos()()    
+    return gestor.obtener_pedidos()  
 
 
 
@@ -86,13 +86,29 @@ def registrarpedido():
     gestor.registrar_pedido(dato['usuario'],dato['producto'],dato['precio'],dato['cantidad'])    
     return '{"data":"Creado"}'
 
-@app.route('/actualizapedido/<id>',methods=['PUT'])
-def actualizarpedido(id):
+@app.route('/padecimiento',methods=['POST'])
+def padecimiento():
+    dato = request.json
+    gestor.registrar_padecimiento(dato['nombre'])    
+    return '{"data":"Creado"}'  
+
+@app.route('/obtenerpadecimientos')
+def obtenerpadecimientos():
+    return gestor.obtenener_padecimientos()
+
+@app.route('/actualizapedido/<producto>',methods=['PUT'])
+def actualizarpedido(producto):
     dato = request.json
     print(dato)
-    if gestor.actualizar_pedido(id,dato['usuario'],dato['producto'],dato['precio'],dato['cantidad']):
+    if gestor.actualizar_pedido(dato['usuario'],producto,dato['precio'],dato['cantidad']):
         return '{"data":"Actualizado"}'
     return '{"data":"Error"}'  
+
+@app.route('/eliminarpedidos')
+def eliminarpedidos():
+    if(gestor.eliminar_pedidos()):
+        return '{"data":"Eliminado"}'
+    return '{"data":"Error"} '  
 
 @app.route('/cargapacientes',methods=['POST'])
 def cargap():

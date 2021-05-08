@@ -7,7 +7,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
 medico=''
 usermedico=''
 var can=1;
-fetch(`http://104.154.88.173:5000/getlogmedico`) //Buscando el usuario seleccionado
+fetch(`http://localhost:5000/getlogmedico`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    medico=data.nombre+" "+data.apellido;
@@ -28,12 +28,12 @@ fetch(`http://104.154.88.173:5000/getlogmedico`) //Buscando el usuario seleccion
     <th scope="col">Fecha</th>
     <th scope="col">Hora</th>
     <th scope="col">Motivo</th>
-    <th scope="col">Aceptar</th>
+    <th scope="col">Completar</th>
     </tr>
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenercitas')
+    fetch('http://localhost:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -88,7 +88,7 @@ function terminar(id,paciente,fecha,hora,motivo){
         "medico":"${medico}"
       }`
     
-      fetch('http://104.154.88.173:5000/actualizacita/'+id, {
+      fetch('http://localhost:5000/actualizacita/'+id, {
         method: 'PUT',
         headers,
         body: reque,
@@ -122,12 +122,12 @@ function actualizacita(){
     <th scope="col">Fecha</th>
     <th scope="col">Hora</th>
     <th scope="col">Motivo</th>
-    <th scope="col">Aceptar</th>
+    <th scope="col">Completar</th>
     </tr>
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenercitas')
+    fetch('http://localhost:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;

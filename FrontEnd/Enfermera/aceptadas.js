@@ -24,7 +24,7 @@ var can=1;
     </thead>
     <tbody>`
     
-    fetch('http://104.154.88.173:5000/obtenercitas')
+    fetch('http://localhost:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;

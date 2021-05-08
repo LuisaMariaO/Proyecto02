@@ -1,0 +1,4 @@
+Repositorio de git con la API en Python: https://github.com/LuisaMariaO/Proyecto02.git
+Enlace de la API desplegada en Python: https://104.154.88.173:5000
+Repositorio de git en donde se almacena la página web: https://github.com/LuisaMariaO/Proyecto02/tree/main/FrontEnd
+Enlace donde se despliega la página web: https://storage.googleapis.com/ipc1frontuwu/FrontEnd/index.html
