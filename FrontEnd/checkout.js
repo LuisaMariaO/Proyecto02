@@ -20,7 +20,7 @@ text2 = `
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenerpedidos')
+fetch('http://34.71.5.108:5000/obtenerpedidos')
 .then(response => response.json())
 .then(data =>{
 var i;
@@ -71,7 +71,7 @@ text2+=`</tbody>
 function termina(){
   print()
   
-   fetch(`http://localhost:5000/eliminarpedidos`)
+   fetch(`http://34.71.5.108:5000/eliminarpedidos`)
    .then(response => response.json())
    .then(data => {
    
@@ -93,7 +93,7 @@ function edita(producto,precio,cantidad){
         "medico":"${medico}"
       }`
     
-      fetch('http://localhost:5000/actualizacita/'+id, {
+      fetch('http://34.71.5.108:5000/actualizacita/'+id, {
         method: 'PUT',
         headers,
         body: reque,
@@ -127,7 +127,7 @@ function actualiza(){
     </thead>
     <tbody>`
     
-    fetch('http://localhost:5000/obtenerpedidos')
+    fetch('http://34.71.5.108:5000/obtenerpedidos')
     .then(response => response.json())
     .then(data =>{
     var i;

@@ -19,7 +19,7 @@ function CrearUsuario(){
     var telefono = document.getElementById("number");
 
     
-    fetch(`http://localhost:5000/pacientes/${usuario.value}`) //Buscando usuarios repetidos
+    fetch(`http://34.71.5.108:5000/pacientes/${usuario.value}`) //Buscando usuarios repetidos
     // Convirtiendo de string a texto
     .then(response => response.json())
     .then(data => {
@@ -40,7 +40,7 @@ function CrearUsuario(){
    
     if(pass.value.length>=8 && pass.value!=""){ 
          
-    fetch('http://localhost:5000/registro',
+    fetch('http://34.71.5.108:5000/registro',
     {
         method:'POST',
         headers,
@@ -102,19 +102,19 @@ function IniciarSesion(){
     }
     else{
         
-        fetch(`http://localhost:5000/login/${usuario.value}/${pass.value}`)
+        fetch(`http://34.71.5.108:5000/login/${usuario.value}/${pass.value}`)
         // Convirtiendo de string a texto
         .then(response => response.json())
         .then(data => {
             
             if(data.nombre=="false"){
-                fetch(`http://localhost:5000/loginmedico/${usuario.value}/${pass.value}`) //Buscando doctores
+                fetch(`http://34.71.5.108:5000/loginmedico/${usuario.value}/${pass.value}`) //Buscando doctores
                 // Convirtiendo de string a texto
                 .then(response => response.json())
                 .then(data => {
                     
                     if(data.nombre=="false"){
-                        fetch(`http://localhost:5000/loginenfermera/${usuario.value}/${pass.value}`) //Buscando enfermeras
+                        fetch(`http://34.71.5.108:5000/loginenfermera/${usuario.value}/${pass.value}`) //Buscando enfermeras
                         // Convirtiendo de string a texto
                         .then(response => response.json())
                         .then(data => {
@@ -124,7 +124,7 @@ function IniciarSesion(){
                               
                             }else{
                                 alert(`Bienvenido enfermera(o): ${data.nombre}`)
-                                fetch(`http://localhost:5000/setlogenfermera/${usuario.value}`, {
+                                fetch(`http://34.71.5.108:5000/setlogenfermera/${usuario.value}`, {
                                     method: 'POST',
                                     headers,
                                     body: `{
@@ -146,7 +146,7 @@ function IniciarSesion(){
                        
                     }else{
                         alert(`Bienvenido doctor(a): ${data.nombre}`)
-                        fetch(`http://localhost:5000/setlogmedico/${usuario.value}`, {
+                        fetch(`http://34.71.5.108:5000/setlogmedico/${usuario.value}`, {
                             method: 'POST',
                             headers,
                             body: `{
@@ -176,7 +176,7 @@ function IniciarSesion(){
                 else{
                 
                 alert(`Bienvenido ${data.nombre}`)
-    fetch(`http://localhost:5000/setloguser/${usuario.value}`, {
+    fetch(`http://34.71.5.108:5000/setloguser/${usuario.value}`, {
     method: 'POST',
     headers,
     body: `{

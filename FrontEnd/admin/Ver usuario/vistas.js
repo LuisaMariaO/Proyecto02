@@ -13,7 +13,7 @@ var nombre = document.getElementById("vnombre");
     var usuario = document.getElementById("vusuario");
     var pass = document.getElementById("vpass")
     var telefono = document.getElementById("vnumber");
-fetch(`http://localhost:5000/getpaciente`) //Buscando el usuario seleccionado
+fetch(`http://34.71.5.108:5000/getpaciente`) //Buscando el usuario seleccionado
 .then(response => response.json())
 .then(data => {
    nombre.value=data.nombre;

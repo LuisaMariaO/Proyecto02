@@ -4,7 +4,7 @@ document.getElementById("medicos").innerHTML='';
     <select id="opciones" name="lineas">
     `
     
-    fetch('http://localhost:5000/obtenermedicos')
+    fetch('http://34.71.5.108:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;

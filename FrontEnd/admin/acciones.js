@@ -18,7 +18,7 @@ function convertirdata(paciente){
   
   function pdfpacientes(){
     
-    fetch('http://localhost:5000/obtenerusuarios')
+    fetch('http://34.71.5.108:5000/obtenerusuarios')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -72,7 +72,7 @@ function convertirdata(paciente){
   
   function pdfdoctores(){
     
-    fetch('http://localhost:5000/obtenermedicos')
+    fetch('http://34.71.5.108:5000/obtenermedicos')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -124,7 +124,7 @@ function convertirdata(paciente){
   
   function pdfenfermeras(){
     
-    fetch('http://localhost:5000/obtenerenfermeras')
+    fetch('http://34.71.5.108:5000/obtenerenfermeras')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -170,7 +170,7 @@ function convertirdata(paciente){
   }
   function pdfmedicamentos(){
     
-    fetch('http://localhost:5000/obtenermedicamentos')
+    fetch('http://34.71.5.108:5000/obtenermedicamentos')
     .then(response => response.json())
     .then(data=>{
       //Declarando los headers
@@ -228,7 +228,7 @@ text = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenerusuarios')
+fetch('http://34.71.5.108:5000/obtenerusuarios')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -275,7 +275,7 @@ text2 = `
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenermedicos')
+fetch('http://34.71.5.108:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -320,7 +320,7 @@ function actualizarenfermeras(){
     </thead>
     <tbody>`
     
-    fetch('http://localhost:5000/obtenerenfermeras')
+    fetch('http://34.71.5.108:5000/obtenerenfermeras')
     .then(response => response.json())
     .then(data =>{
         var i;
@@ -366,7 +366,7 @@ text4 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://34.71.5.108:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -410,7 +410,7 @@ text = `
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenerusuarios')
+fetch('http://34.71.5.108:5000/obtenerusuarios')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -455,7 +455,7 @@ text2 = `
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenermedicos')
+fetch('http://34.71.5.108:5000/obtenermedicos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -497,7 +497,7 @@ text3 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenerenfermeras')
+fetch('http://34.71.5.108:5000/obtenerenfermeras')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -540,7 +540,7 @@ text4 = `<table class="table" style="margin=10px">
 </thead>
 <tbody>`
 
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://34.71.5.108:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -570,7 +570,7 @@ fetch('http://localhost:5000/obtenermedicamentos')
 
 function verusuario(usuario){
   //let user = usuario
-  fetch(`http://localhost:5000/setpaciente/${usuario}`, {
+  fetch(`http://34.71.5.108:5000/setpaciente/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -598,7 +598,7 @@ function verusuario(usuario){
 
 function modificarusuario(usuario){
 
-fetch(`http://localhost:5000/setpaciente/${usuario}`, {
+fetch(`http://34.71.5.108:5000/setpaciente/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -621,7 +621,7 @@ fetch(`http://localhost:5000/setpaciente/${usuario}`, {
 }
 function eliminarusuario(usuario){
  
-  fetch('http://localhost:5000/eliminarpaciente/'+usuario,{
+  fetch('http://34.71.5.108:5000/eliminarpaciente/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -634,7 +634,7 @@ function eliminarusuario(usuario){
 //Acciones para los botones de la tabla de médicos
 function vermedico(usuario){
   //let user = usuario
-  fetch(`http://localhost:5000/setmedico/${usuario}`, {
+  fetch(`http://34.71.5.108:5000/setmedico/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -662,7 +662,7 @@ function vermedico(usuario){
 
 function modificarmedico(usuario){
 
-fetch(`http://localhost:5000/setmedico/${usuario}`, {
+fetch(`http://34.71.5.108:5000/setmedico/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -683,7 +683,7 @@ fetch(`http://localhost:5000/setmedico/${usuario}`, {
 }
 function eliminarmedico(usuario){
  
-  fetch('http://localhost:5000/eliminarmedico/'+usuario,{
+  fetch('http://34.71.5.108:5000/eliminarmedico/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -696,7 +696,7 @@ function eliminarmedico(usuario){
 
 //Acciones para los botones de la tabla de enfermeras
 function verenfermera(usuario){
-  fetch(`http://localhost:5000/setenfermera/${usuario}`, {
+  fetch(`http://34.71.5.108:5000/setenfermera/${usuario}`, {
     method: 'POST',
     headers,
     body: `{
@@ -724,7 +724,7 @@ function verenfermera(usuario){
 
 function modificarenfermera(usuario){
 
-fetch(`http://localhost:5000/setenfermera/${usuario}`, {
+fetch(`http://34.71.5.108:5000/setenfermera/${usuario}`, {
   method: 'POST',
   headers,
   body: `{
@@ -746,7 +746,7 @@ fetch(`http://localhost:5000/setenfermera/${usuario}`, {
 
 function eliminarenfermera(usuario){
  
-  fetch('http://localhost:5000/eliminarenfermera/'+usuario,{
+  fetch('http://34.71.5.108:5000/eliminarenfermera/'+usuario,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -759,7 +759,7 @@ function eliminarenfermera(usuario){
 
 //Acciones para los botones de la tabla de medicamentos
 function vermedicamento(nombre){
-  fetch(`http://localhost:5000/setmedicamento/${nombre}`, {
+  fetch(`http://34.71.5.108:5000/setmedicamento/${nombre}`, {
     method: 'POST',
     headers,
     body: `{
@@ -787,7 +787,7 @@ function vermedicamento(nombre){
 
 function modificarmedicamento(nombre){
 
-fetch(`http://localhost:5000/setmedicamento/${nombre}`, {
+fetch(`http://34.71.5.108:5000/setmedicamento/${nombre}`, {
   method: 'POST',
   headers,
   body: `{
@@ -809,7 +809,7 @@ fetch(`http://localhost:5000/setmedicamento/${nombre}`, {
 
 function eliminarmedicamento(nombre){
  
-  fetch('http://localhost:5000/eliminarmedicamento/'+nombre,{
+  fetch('http://34.71.5.108:5000/eliminarmedicamento/'+nombre,{
       method:'DELETE'
   })
   .then(res => res.text())
@@ -833,7 +833,7 @@ function cargar(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://localhost:5000/cargapacientes', {
+            fetch('http://34.71.5.108:5000/cargapacientes', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -872,7 +872,7 @@ function cargarmedicos(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://localhost:5000/cargamedicos', {
+            fetch('http://34.71.5.108:5000/cargamedicos', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -912,7 +912,7 @@ function cargarenfermeras(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://localhost:5000/cargaenfermeras', {
+            fetch('http://34.71.5.108:5000/cargaenfermeras', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),
@@ -951,7 +951,7 @@ function cargarmedicamentos(){
             }
             
             console.log(JSON.stringify(cuerpo))
-            fetch('http://localhost:5000/cargamedicamentos', {
+            fetch('http://34.71.5.108:5000/cargamedicamentos', {
             method: 'POST',
             headers,
             body: JSON.stringify(cuerpo),

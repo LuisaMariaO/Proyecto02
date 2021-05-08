@@ -6,7 +6,7 @@ headers.append('Access-Control-Allow-Origin', 'http://localhost:5000');
 headers.append('Access-Control-Allow-Credentials', 'true');
 headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
 usuario=''
-fetch(`http://localhost:5000/getloguser`) //Buscando el usuario seleccionado
+fetch(`http://34.71.5.108:5000/getloguser`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    usuario=data.user;
@@ -17,7 +17,7 @@ let text="";
 text=` 
 ` 
 
-fetch('http://localhost:5000/obtenermedicamentos')
+fetch('http://34.71.5.108:5000/obtenermedicamentos')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -56,7 +56,7 @@ document.getElementById("Lista").innerHTML+=lista;
 
 
 
-fetch('http://localhost:5000/nuevopedido',
+fetch('http://34.71.5.108:5000/nuevopedido',
         {
             method:'POST',
             headers,

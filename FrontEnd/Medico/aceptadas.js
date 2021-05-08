@@ -7,7 +7,7 @@ headers.append('GET', 'POST', 'OPTIONS','PUT','DELETE');
 medico=''
 usermedico=''
 var can=1;
-fetch(`http://localhost:5000/getlogmedico`) //Buscando el usuario seleccionado
+fetch(`http://34.71.5.108:5000/getlogmedico`) //Buscando el usuario seleccionado
     .then(response => response.json())
     .then(data => {
    medico=data.nombre+" "+data.apellido;
@@ -33,7 +33,7 @@ fetch(`http://localhost:5000/getlogmedico`) //Buscando el usuario seleccionado
     </thead>
     <tbody>`
     
-    fetch('http://localhost:5000/obtenercitas')
+    fetch('http://34.71.5.108:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;
@@ -88,7 +88,7 @@ function terminar(id,paciente,fecha,hora,motivo){
         "medico":"${medico}"
       }`
     
-      fetch('http://localhost:5000/actualizacita/'+id, {
+      fetch('http://34.71.5.108:5000/actualizacita/'+id, {
         method: 'PUT',
         headers,
         body: reque,
@@ -127,7 +127,7 @@ function actualizacita(){
     </thead>
     <tbody>`
     
-    fetch('http://localhost:5000/obtenercitas')
+    fetch('http://34.71.5.108:5000/obtenercitas')
 .then(response => response.json())
 .then(data =>{
     var i;
